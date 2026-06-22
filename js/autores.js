@@ -6,8 +6,8 @@ function abrirModal() {
 
     overlay.innerHTML = `
         <div class="modal-box">         
-        <h2 class="modal-titulo">Agregar genero</h2>
-        <input type="text" name ="genero" id="genero" placeholder="Genero del libro">
+        <h2 class="modal-titulo">Agregar autor</h2>
+        <input type="text" name ="nombre" id="nombre" placeholder="Nombre del autor">
         <div class="modal-acciones">
             <button class="btn-secundario" id="btn-cancelar">Cancelar</button>
             <button class="btn-primario" id="btn-guardar">Guardar</button>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="sp">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="../js/auth.js"></script>
+    <script defer src="../js/libros.js"></script>
     <title>Libros</title>
 </head>
 <body>
@@ -15,14 +15,8 @@
     </header>
     <main>
         <a href="../index.html">Volver</a>
-
-        <input type="text" name="nombreLibro" id="nombreLibro" placeholder="Nombre del libro">
-        <input type="text" name="genero" id="genero" placeholder="Genero del libro">
-        <input type="text" name="autorLibro" id="autorLibro" placeholder="Autor del libro">
-        <input type="text" name="numeroPaginas" id="numeroPaginas" placeholder="Numero de paginas">
-        <input type="text" name="estado" id="estado" placeholder="Estado del libro">
-
-        <button id="crearLibro" type="submit">Cargar Libro</button>
+        <!-- libros.html -->
+        <button onclick="abrirModal()">Agregar libro</button>
     </main>
     <footer>
         <p>&copy; Programacion 3 - TP final.
@@ -37,4 +31,4 @@
         </p>
     </footer>
 </body>
-</html></html>
+</html>
