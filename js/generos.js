@@ -1,8 +1,13 @@
-function abrirModal() {
-    if (document.querySelector('.modal-overlay')) return
+// JS dedicado a la gestión de generos CRUD.
+
+//Funcion para crear el modal de la creación de un nuevo genero.
+
+
+export async function abrirModalGenero() {
+    if (document.querySelector('.modal-overlay-genero')) return
     
     const overlay = document.createElement('div')
-    overlay.className = 'modal-overlay'  // ← clase que ella va a estilizar
+    overlay.className = 'modal-overlay modal-overlay-genero'  // ← clase que ella va a estilizar
 
     overlay.innerHTML = `
         <div class="modal-box">         
@@ -18,3 +23,7 @@ function abrirModal() {
     document.body.appendChild(overlay)
     overlay.querySelector('#btn-cancelar').onclick = () => overlay.remove()
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn-agregar-genero')
+    if (btn) btn.onclick = () => abrirModalGenero()
+})

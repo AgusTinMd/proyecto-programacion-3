@@ -1,0 +1,14 @@
+{
+    "usuarios": [],
+    "autores": [    
+        { "id": 1, "nombre": "Gabriel García Márquez" },
+        { "id": 2, "nombre": "Jorge Luis Borges" }
+    ],
+    "generos": [
+        { "id": 1, "nombre": "Realismo mágico" },
+        { "id": 2, "nombre": "Ciencia ficción" }
+    ],
+    "libros": [],
+    "biblioteca": [],
+    "anotaciones": []
+}
