@@ -1,7 +1,8 @@
 // JS dedicado a la gestión de libros CRUD.
 //Funcion para crear el modal de la creación de un nuevo libro.
-import { abrirModalAutor } from './autores.js'
-import { abrirModalGenero } from './generos.js'
+const API_URL = 'http://localhost:3000'
+import { abrirModalAutor,cargarAutores } from './autores.js'
+import { abrirModalGenero,cargarGeneros } from './generos.js'
 
 
 export async function abrirModalLibros() {
@@ -48,8 +49,12 @@ export async function abrirModalLibros() {
     overlay.querySelector('#btn-cancelar').onclick = () => overlay.remove()
     overlay.querySelector('#btn-guardar').onclick = () => guardarLibro()
 
-    overlay.querySelector('#btn-agregar-autor').onclick = () => abrirModalAutor()
-    overlay.querySelector('#btn-agregar-genero').onclick = () => abrirModalGenero()
+    overlay.querySelector('#btn-agregar-autor').onclick = (e) => {e.stopPropagation()
+        abrirModalAutor()
+    }
+    overlay.querySelector('#btn-agregar-genero').onclick = (e) => {e.stopPropagation()
+        abrirModalGenero()
+    }
 
     await cargarGeneros()
     await cargarAutores()
@@ -58,30 +63,26 @@ export async function abrirModalLibros() {
 
 // CRUD 
 
-const API_URL = 'http://localhost:3000'
 
-async function cargarGeneros() {
-    const response = await axios.get(`${API_URL}/generos`)
-    const generos = response.data
-    generos.forEach((genero) => {
-        const option = document.createElement('option')
-        option.value = genero.id
-        option.textContent = genero.nombre
-        document.getElementById('genero').appendChild(option)
+async function guardarLibro(){
+    const nombreLibro = document.getElementById('nombreLibro').value
+    const generoId = document.getElementById('genero').value
+    const autorId = document.getElementById('autorLibro').value
+    const numeroPaginas = document.getElementById('numeroPaginas').value
+    const estado = document.getElementById('estado').value
+    
+    await axios.post(`${API_URL}/libros`, { 
+        nombre: nombreLibro,
+        generoId: generoId,
+        autorId: autorId,
+        numeroPaginas: numeroPaginas,
+        estado: estado
     })
-}
-
-async function cargarAutores() {
-    const response = await axios.get( `${API_URL}/autores`)
-    const autores = response.data
-    autores.forEach((autor) => {
-        const option = document.createElement('option')
-        option.value = autor.id
-        option.textContent = autor.nombre
-        document.getElementById('autorLibro').appendChild(option)
-    })
+    document.querySelector('.modal-overlay').remove()
+    await cargarLibros()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btn-agregar-libro').onclick = () => abrirModalLibros()
+    document.getElementById('btn-agregar-libro').onclick = (e) => {e.stopPropagation()}
+        abrirModalLibros()
 })
