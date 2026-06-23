@@ -46,7 +46,10 @@ export async function abrirModalLibros() {
     
     document.body.appendChild(overlay)
     
-    overlay.querySelector('#btn-cancelar').onclick = () => overlay.remove()
+overlay.querySelector('#btn-cancelar').onclick = (e) => {
+    e.stopPropagation()
+    overlay.remove()
+}
     overlay.querySelector('#btn-guardar').onclick = () => guardarLibro()
 
     overlay.querySelector('#btn-agregar-autor').onclick = (e) => {e.stopPropagation()
@@ -59,8 +62,6 @@ export async function abrirModalLibros() {
     await cargarGeneros()
     await cargarAutores()
 }
-
-
 // CRUD 
 
 
@@ -83,6 +84,29 @@ async function guardarLibro(){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btn-agregar-libro').onclick = (e) => {e.stopPropagation()}
+    document.getElementById('btn-agregar-libro').onclick = (e) => {e.stopPropagation()
         abrirModalLibros()
+    }
+})
+
+async function mostrarLibros(){
+    const response = await axios.get(`${API_URL}/libros`)
+    const libros = response.data
+    console.log(libros)
+    const tarjetaLibros = document.createElement('div')
+    tarjetaLibros.className = 'tarjeta-libros'
+    tarjetaLibros.innerHTML = libros.map(libro => `
+        <div class="libro">
+            <h3>${libro.nombre}</h3>
+            <p>Género: ${libro.generoId}</p>
+            <p>Autor: ${libro.autorId}</p>
+            <p>Número de páginas: ${libro.numeroPaginas}</p>
+            <p>Estado: ${libro.estado}</p>
+        </div>
+    `).join('')
+    document.body.appendChild(tarjetaLibros)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarLibros()
 })

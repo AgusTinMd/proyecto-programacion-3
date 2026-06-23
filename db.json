@@ -1,8 +1,31 @@
 {
   "usuarios": [],
-  "autores": [],
-  "generos": [],
-  "libros": [],
+  "autores": [
+    {
+      "nombre": "J.K. Rowling",
+      "id": 1
+    }
+  ],
+  "generos": [
+    {
+      "nombre": "Ciencia Ficcion",
+      "id": 1
+    },
+    {
+      "nombre": "Fantasia",
+      "id": 2
+    }
+  ],
+  "libros": [
+    {
+      "nombre": "Harry Potter 1 ",
+      "generoId": "1",
+      "autorId": "1",
+      "numeroPaginas": "350",
+      "estado": "Leido",
+      "id": 1
+    }
+  ],
   "biblioteca": [],
   "anotaciones": []
 }
