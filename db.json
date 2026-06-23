@@ -1,14 +1,8 @@
 {
   "usuarios": [],
   "autores": [],
-  "generos": [
-    {
-      "nombre": "Ciencia Ficcion",
-      "id": 1
-    }
-  ],
+  "generos": [],
   "libros": [],
   "biblioteca": [],
-  "anotaciones": [],
-  "$schema": "./node_modules/json-server/schema.json"
+  "anotaciones": []
 }
