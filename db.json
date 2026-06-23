@@ -1,14 +1,14 @@
 {
-    "usuarios": [],
-    "autores": [    
-        { "id": 1, "nombre": "Gabriel García Márquez" },
-        { "id": 2, "nombre": "Jorge Luis Borges" }
-    ],
-    "generos": [
-        { "id": 1, "nombre": "Realismo mágico" },
-        { "id": 2, "nombre": "Ciencia ficción" }
-    ],
-    "libros": [],
-    "biblioteca": [],
-    "anotaciones": []
+  "usuarios": [],
+  "autores": [],
+  "generos": [
+    {
+      "nombre": "Ciencia Ficcion",
+      "id": 1
+    }
+  ],
+  "libros": [],
+  "biblioteca": [],
+  "anotaciones": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
