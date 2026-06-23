@@ -1,14 +1,69 @@
 {
-    "usuarios": [],
-    "autores": [    
-        { "id": 1, "nombre": "Gabriel García Márquez" },
-        { "id": 2, "nombre": "Jorge Luis Borges" }
-    ],
-    "generos": [
-        { "id": 1, "nombre": "Realismo mágico" },
-        { "id": 2, "nombre": "Ciencia ficción" }
-    ],
-    "libros": [],
-    "biblioteca": [],
-    "anotaciones": []
+  "usuario": [
+    {
+      "id": 1,
+      "username": "AMD",
+      "clave": "1234",
+      "nombre": "Agustin",
+      "apellido": "Maidana Diaz",
+      "dni": "43291404",
+      "direccion": "B° 240 viviendas"
+    },
+    {
+      "username": "pepe",
+      "clave": "123",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": 2
+    }
+  ],
+  "autores": [
+    {
+      "id": 1,
+      "nombre": "Gabriel García Márquez",
+      "nacionalidad": "Peruano",
+      "info_autor": "Comia lentejas"
+    },
+    {
+      "id": 2,
+      "nombre": "Jorge Luis Borges",
+      "nacionalidad": "Peruano",
+      "info_autor": "Se murio por una papa"
+    }
+  ],
+  "genero": [
+    {
+      "id": 1,
+      "nombre": "Realismo mágico",
+      "Descripcion": "Realismo mágico"
+    },
+    {
+      "id": 2,
+      "nombre": "Ciencia ficción",
+      "Descripcion": "Ciencia ficción"
+    }
+  ],
+  "libro": [
+    {
+      "id": 1,
+      "autorId": 1,
+      "titulo": "string",
+      "generoId": 1,
+      "year_publicacion": 2023,
+      "cantidad_paginas": 0,
+      "estado": "string"
+    }
+  ],
+  "anotacion": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "libroId": 1,
+      "pagina": 0,
+      "detalle_anotacion": "Te parecen bien 47cm ?",
+      "fecha_anotacion": "2023-10-24"
+    }
+  ]
 }
