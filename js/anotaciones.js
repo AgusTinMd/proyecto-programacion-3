@@ -1,3 +1,8 @@
+// JS dedicado a la gestión de anotaciones CRUD.
+
+//Funcion para crear el modal de la creación de una nueva anotacion.
+
+
 function abrirModal() {
     if (document.querySelector('.modal-overlay')) return
 
@@ -6,7 +11,7 @@ function abrirModal() {
     const idLibro = params.get('id_libro')
 
     const overlay = document.createElement('div')
-    overlay.className = 'modal-overlay'
+    overlay.className = 'modal-overlay-anotacion'
 
     overlay.innerHTML = `
         <div class="modal-box">         
@@ -25,3 +30,5 @@ function abrirModal() {
     document.body.appendChild(overlay)
     overlay.querySelector('#btn-cancelar').onclick = () => overlay.remove()
 }
+
+// CRUD 
