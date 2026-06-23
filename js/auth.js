@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            axios.get('http://localhost:3000/usuario')
+            axios.get('http://localhost:3000/usuarios')
                 .then(response => {
                     const usuarios = response.data;
                     
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 direccion: ""
             };
 
-            axios.post('http://localhost:3000/usuario', nuevoUsuario)
+            axios.post('http://localhost:3000/usuarios', nuevoUsuario)
                 .then(response => {
                     console.log('Usuario creado en db.json:', response.data);
                     //alert('¡Usuario creado con éxito!');
