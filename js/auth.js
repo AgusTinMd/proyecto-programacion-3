@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log('Inicio de sesión exitoso. ¡Bienvenido, ' + foundUser.nombre + '!');
                         
                         // --- AQUÍ IRÍA LA LÓGICA DE REDIRECCIÓN ---
-                        // window.location.href = 'dashboard.html'; 
+                          window.location.href = '../pages/libros.html';
                         
                     } else {
                         console.log('Error: Usuario o contraseña incorrectos.');
@@ -68,8 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('clave').value = '';
 
                     // Descomenta la siguiente línea si quieres que lo redirija automáticamente al login
-                    // window.location.href = '../index.html'; 
-                })
+                        window.location.href = '../pages/login.html';                })
                 .catch(error => {
                     console.error('Error en la petición POST:', error);
                     alert('Hubo un error al intentar crear el usuario.');

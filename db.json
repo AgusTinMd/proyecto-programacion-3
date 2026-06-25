@@ -1,19 +1,38 @@
 {
-  "usuarios": [],
+  "usuarios": [
+    {
+      "username": "esteban",
+      "clave": "1234",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "qylOeXCgmYg"
+    },
+    {
+      "username": "esteban",
+      "clave": "1234",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "86_LtRxRqIQ"
+    }
+  ],
   "autores": [
     {
       "nombre": "J.K. Rowling",
-      "id": 1
+      "id": "1"
     }
   ],
   "generos": [
     {
       "nombre": "Ciencia Ficcion",
-      "id": 1
+      "id": "1"
     },
     {
       "nombre": "Fantasia",
-      "id": 2
+      "id": "2"
     }
   ],
   "libros": [
@@ -23,9 +42,10 @@
       "autorId": "1",
       "numeroPaginas": "350",
       "estado": "Leido",
-      "id": 1
+      "id": "1"
     }
   ],
   "biblioteca": [],
-  "anotaciones": []
+  "anotaciones": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
