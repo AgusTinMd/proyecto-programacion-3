@@ -1,0 +1,497 @@
+/* ==========================================================================
+   COMPONENTES VISUALES E INTERFACES REUTILIZABLES (components.css)
+   ========================================================================== */
+
+/* --- INTERFAZ ESTRUCTURAL DE LA LANDING --- */
+.contenedor-hero {
+    display: flex;
+    min-height: 80vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-izquierda {
+    flex: 1;
+    background-color: var(--color-midnight-violet);
+    color: var(--color-seashell);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    z-index: 2;
+}
+
+.hero-izquierda h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    color: var(--color-wheat);
+}
+
+.hero-izquierda p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    opacity: 0.9;
+}
+
+.hero-derecha {
+    flex: 1;
+    background-color: var(--color-french-blue);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- TAPIZ DE LIBROS (MOSAICO) --- */
+.collage-libros {
+    display: grid;
+    grid-template-columns: repeat(6, 120px); 
+    gap: 12px;
+    transform: rotate(-12deg) scale(1.3); 
+    opacity: 0.9;
+    pointer-events: auto; 
+    user-select: none;
+}
+
+.portada-libros {
+    width: 120px;
+    height: 175px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    object-fit: cover;
+    background-color: var(--color-powder-blue);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.portada-libros:hover {
+    transform: scale(1.15); 
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6); 
+    z-index: 10;
+}
+
+/* --- BOTONES Y LINKS --- */
+.cta-botones {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-wheat {
+    background-color: var(--color-wheat);
+    color: var(--color-midnight-violet);
+}
+
+.btn-wheat:hover {
+    background-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(246, 224, 182, 0.3);
+}
+
+.link {
+    color: var(--color-powder-blue);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--color-powder-blue);
+    padding-bottom: 2px;
+}
+
+.link:hover {
+    color: white;
+    border-bottom-style: solid;
+}
+
+/* --- ICONO GITHUB --- */
+.github-link {
+    color: #666;
+    margin-left: 0.3rem;
+    font-size: 1.05rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.github-link:hover {
+    color: var(--color-midnight-violet);
+    transform: scale(1.15);
+}
+
+/* --- PANTALLAS DE ACCESO (VIBRA PINTEREST) --- */
+.pantalla-acceso {
+    background-color: var(--color-midnight-violet);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.contenedor-acceso {
+    width: 100%;
+    max-width: 400px;
+}
+
+.tarjeta-acceso {
+    background-color: white;
+    border-radius: 24px; 
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.titulo-acceso {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--color-french-blue);
+    text-align: center;
+    margin-bottom: 0.3rem;
+    letter-spacing: -1.5px;
+}
+
+.subtitulo-acceso {
+    text-align: center;
+    color: var(--color-midnight-violet);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+/* --- CUADROS DE FORMULARIO --- */
+.grupo-formulario {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.etiqueta-formulario {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-midnight-violet);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.entrada-formulario {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(166, 188, 201, 0.5);
+    border-radius: 12px;
+    background-color: var(--color-seashell);
+    color: var(--color-midnight-violet);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.entrada-formulario:focus {
+    outline: none;
+    border-color: var(--color-french-blue);
+    background-color: white; 
+    box-shadow: 0 0 0 4px rgba(62, 75, 142, 0.15);
+}
+
+.entrada-formulario::placeholder {
+    color: var(--color-powder-blue);
+    opacity: 0.9;
+}
+
+/* --- BOTONES DE BLOQUE --- */
+.boton-bloque {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    background-color: var(--color-french-blue); 
+    color: var(--color-seashell);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.boton-bloque:hover {
+    background-color: var(--color-midnight-violet);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(62, 75, 142, 0.3);
+}
+
+.pie-tarjeta {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.enlace-acceso {
+    color: var(--color-french-blue);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.enlace-acceso:hover {
+    color: var(--color-midnight-violet);
+    text-decoration: underline;
+}
+
+.enlace-volver {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #888;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.enlace-volver:hover {
+    color: var(--color-midnight-violet);
+}
+
+/* --- MÁQUINA DE ESCRIBIR LANDING --- */
+.efecto-tipeo {
+    font-size: 3.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--color-wheat);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    white-space: nowrap;
+    border-right: 4px solid var(--color-wheat); 
+    overflow: hidden;              
+    width: 0;                      
+    animation: 
+        escribiendo 0.7s steps(5) 0.3s forwards,
+        parpadeo-cursor 0.75s step-end infinite;
+}
+
+@keyframes escribiendo {
+    from { width: 0; }
+    to { width: 180px; } 
+}
+
+@keyframes parpadeo-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-wheat); }
+}
+
+/* --- INTERFACES INTERNAS DEL GESTOR --- */
+.barra-navegacion {
+    background-color: var(--color-midnight-violet);
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo-nav {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-wheat);
+    letter-spacing: -1px;
+}
+
+.enlaces-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.link-nav {
+    color: var(--color-seashell);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.link-nav:hover, .link-nav.activo {
+    opacity: 1;
+    color: var(--color-wheat);
+    border-bottom-color: var(--color-wheat);
+}
+
+.btn-salir {
+    color: var(--color-powder-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.btn-salir:hover {
+    color: white;
+}
+
+.contenedor-gestor {
+    display: flex;
+    max-width: 1300px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    gap: 2.5rem;
+    flex: 1;
+}
+
+.panel-controles {
+    flex: 0 0 300px;
+}
+
+.panel-catalogo {
+    flex: 1;
+}
+
+.panel-catalogo h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-midnight-violet);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(166, 188, 201, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.tarjeta-control {
+    background-color: var(--color-seashell);
+    border-radius: 16px;
+    padding: 1.8rem;
+    border: 1px solid rgba(166, 188, 201, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tarjeta-control h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-midnight-violet);
+}
+
+.descripcion-control {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.grilla-catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 6px;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 0.8rem;
+}
+.badge-por-leer { background-color: var(--status-por-leer); }
+.badge-leyendo { background-color: var(--status-leyendo); }
+.badge-terminado { background-color: var(--status-terminado); }
+
+/* --- MODALES FLOTANTES (POPUP) --- */
+.modal-fondo {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(61, 21, 52, 0.6); 
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-contenido {
+    background-color: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    animation: entradaModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes entradaModal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(166, 188, 201, 0.3);
+    padding-bottom: 0.8rem;
+}
+
+.modal-cabecera h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-midnight-violet);
+}
+
+.btn-cerrar {
+    background: none; border: none; font-size: 1.8rem;
+    color: var(--color-powder-blue); cursor: pointer; line-height: 1;
+    transition: color 0.2s ease;
+}
+.btn-cerrar:hover { color: var(--color-midnight-violet); }
+
+.select-custom {
+    cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%233D1534' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat; background-position: right 16px center; background-size: 14px;
+}
+
+.modal-acciones { display: flex; gap: 1rem; margin-top: 2rem; }
+
+.btn-volver {
+    background-color: var(--color-seashell); color: #666;
+    border: 1px solid rgba(166, 188, 201, 0.5); width: 40%;
+}
+.btn-volver:hover { background-color: #f5ede6; color: var(--color-midnight-violet); }
+
+/* --- DINÁMICAS GRILLA --- */
+.tarjeta-libro-render {
+    background-color: white;
+    border: 1px solid rgba(166, 188, 201, 0.4);
+    border-radius: 16px; padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+.tarjeta-libro-render:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(62, 75, 142, 0.15);
+}
+.titulo-libro-render { font-size: 1.25rem; font-weight: 800; color: var(--color-midnight-violet); margin-bottom: 0.4rem; }
+.autor-libro-render { font-size: 0.95rem; color: #666; font-style: italic; margin-bottom: 1rem; }

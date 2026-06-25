@@ -5,32 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="../js/auth.js"></script>
-    <title>Login</title>
+    <title>Login - tomo.</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/components.css">
 </head>
-<body>
-    <header>
-        <div>
-            <h1>Iniciar Sesion</h1>
+<body class="pantalla-acceso">
+
+<main class="contenedor-acceso">
+    <div class="tarjeta-acceso">
+        <h2 class="titulo-acceso">tomo.</h2>
+        <p class="subtitulo-acceso">Ingresá a tu biblioteca personal</p>
+
+        <form id="formulario-login">
+            <!-- usuario -->
+            <div class="grupo-formulario">
+                <label class="etiqueta-formulario">Usuario o Correo</label>
+                <input type="text" name="usuario" id="usuario" class="entrada-formulario" placeholder="laraain123@gmail.com" required>
+            </div>
+
+            <!-- contraseña -->
+            <div class="grupo-formulario">
+                <label class="etiqueta-formulario">Contraseña</label>
+                <input type="password" name="clave" id="clave" class="entrada-formulario" placeholder="••••••••" required>
+            </div>
+
+            <button id="login" type="submit" class="boton-bloque">Iniciar Sesion</button>
+        </form>
+
+        <div class="pie-tarjeta">
+            <p>¿No tenés cuenta? <a href="../pages/singup.html" class="enlace-acceso">Crear Cuenta</a></p>
+            <a href="../index.html" class="enlace-volver">← Volver al inicio</a>
         </div>
-    </header>
-    <main>
-        <input type="text" name="usuario" id="usuario" placeholder="Usuario">
-        <input type="password" name="clave" id="clave" placeholder="Contraseña">
-        <button id="login" type="submit">Iniciar Sesion</button>
-        <a href="../pages/singup.html">Crear Cuenta</a>
-        <a href="../index.html">Volver</a>
-    </main>
-    <footer>
-        <p>&copy; Programacion 3 - TP final.
-            <ol>
-                <li>Agustin Rodriguez</li>
-                <li>Axel Molina</li>
-                <li>Lara Serrano</li>
-                <li>Agustin Maidana</li>
-                <li>Giacomo Marangon</li>
-                <li>Esteban Najera</li>
-            </ol>
-        </p>
-    </footer>
-</body>
+    </div>
+</main>
+
+    </body>
 </html>

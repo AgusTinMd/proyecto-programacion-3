@@ -1,19 +1,119 @@
 {
-  "usuarios": [],
+  "usuarios": [
+    {
+      "username": "Laraain123",
+      "clave": "Lara2302",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "s6HWzjybCcQ"
+    },
+    {
+      "username": "Laraain123",
+      "clave": "123456",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "IU9eYLbKgkg"
+    },
+    {
+      "username": "laraain123",
+      "clave": "123456",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "oHtHC2PrHMw"
+    },
+    {
+      "username": "123",
+      "clave": "123456",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "-tr8xp8I7n4"
+    },
+    {
+      "username": "1234",
+      "clave": "123456",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "1FKerRDUglk"
+    },
+    {
+      "username": "aaaaaa",
+      "clave": "aaaaaa",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "if1i4lngkZc"
+    },
+    {
+      "username": "121212",
+      "clave": "121212",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "245QCGzVt70"
+    },
+    {
+      "username": "111111",
+      "clave": "111111",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "j18YdL-zIN8"
+    },
+    {
+      "username": "lara123",
+      "clave": "123123",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "SDs6meM5V0o"
+    },
+    {
+      "username": "LaraSerrano",
+      "clave": "123456",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "e9OryNlCt7c"
+    },
+    {
+      "username": "uwu",
+      "clave": "123456",
+      "nombre": "",
+      "apellido": "",
+      "dni": "",
+      "direccion": "",
+      "id": "EAP4dqX7SJw"
+    }
+  ],
   "autores": [
     {
       "nombre": "J.K. Rowling",
-      "id": 1
+      "id": "1"
     }
   ],
   "generos": [
     {
       "nombre": "Ciencia Ficcion",
-      "id": 1
+      "id": "1"
     },
     {
       "nombre": "Fantasia",
-      "id": 2
+      "id": "2"
     }
   ],
   "libros": [
@@ -23,9 +123,10 @@
       "autorId": "1",
       "numeroPaginas": "350",
       "estado": "Leido",
-      "id": 1
+      "id": "1"
     }
   ],
   "biblioteca": [],
-  "anotaciones": []
+  "anotaciones": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }

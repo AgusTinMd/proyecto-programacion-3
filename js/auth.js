@@ -1,54 +1,52 @@
+// ==========================================================================
+// CONTROLADOR DE AUTENTICACIÓN (LOGIN Y REGISTRO) - tomo. (js/auth.js)
+// ==========================================================================
+
+const API_URL = 'http://localhost:3000';
+
 document.addEventListener('DOMContentLoaded', function () {
-    const loginButton = document.getElementById('login');
     
-    if (loginButton) {
-        loginButton.addEventListener('click', function () {
+    // --- LÓGICA DE INICIO DE SESIÓN (LOGIN) ---
+    const formularioLogin = document.getElementById('formulario-login');
+    
+    if (formularioLogin) {
+        formularioLogin.addEventListener('submit', function (e) {
+            e.preventDefault(); 
+
             const usuarioInput = document.getElementById('usuario').value;
             const claveInput = document.getElementById('clave').value;
 
-            if (!usuarioInput || !claveInput) {
-                console.log('Error: Por favor, ingrese su usuario y contraseña.');
-                return;
-            }
-
-            axios.get('http://localhost:3000/usuarios')
+            axios.get(`${API_URL}/usuarios`)
                 .then(response => {
                     const usuarios = response.data;
-                    
                     const foundUser = usuarios.find(user => user.username === usuarioInput && user.clave === claveInput);
 
                     if (foundUser) {
-                        console.log('Inicio de sesión exitoso. ¡Bienvenido, ' + foundUser.nombre + '!');
+                        alert('¡Inicio de sesión exitoso! Bienvenido/a ' + (foundUser.username));
+                        localStorage.setItem('usuarioLogueado', JSON.stringify(foundUser));
                         
-                        // --- AQUÍ IRÍA LA LÓGICA DE REDIRECCIÓN ---
-                        // window.location.href = 'dashboard.html'; 
-                        
+                        // Redirección directa al vivir en la misma carpeta pages/
+                        window.location.href = 'libros.html'; 
                     } else {
-                        console.log('Error: Usuario o contraseña incorrectos.');
+                        alert('Error: Usuario o contraseña incorrectos.');
                     }
                 })
                 .catch(error => {
-                    console.error('Error al cargar los datos:', error);
+                    console.error('Error al cargar los datos de usuarios:', error);
+                    alert('Hubo un error al conectar con el servidor. Revisá que JSON Server esté corriendo.');
                 });
         });
     }
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Capturamos el botón usando el ID correcto de tu HTML
-    const btnCrearUsuario = document.getElementById('crearUsuario');
+    // --- LÓGICA DE CREACIÓN DE USUARIO (SIGNUP) ---
+    const formularioRegistro = document.getElementById('formulario-registro');
 
-    if (btnCrearUsuario) {
-        btnCrearUsuario.addEventListener('click', function () {
+    if (formularioRegistro) {
+        formularioRegistro.addEventListener('submit', function (e) {
+            e.preventDefault(); 
             
             const usuarioInput = document.getElementById('usuario').value;
             const claveInput = document.getElementById('clave').value;
-
-            if (!usuarioInput || !claveInput) {
-                console.log('Error: Faltan datos.');
-                alert('Por favor, ingresa un usuario y una contraseña.');
-                return;
-            }
 
             const nuevoUsuario = {
                 username: usuarioInput,
@@ -59,20 +57,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 direccion: ""
             };
 
-            axios.post('http://localhost:3000/usuarios', nuevoUsuario)
+            axios.post(`${API_URL}/usuarios`, nuevoUsuario)
                 .then(response => {
                     console.log('Usuario creado en db.json:', response.data);
-                    //alert('¡Usuario creado con éxito!');
+                    alert('¡Cuenta creada con éxito! Ahora iniciá sesión.');
                     
-                    document.getElementById('usuario').value = '';
-                    document.getElementById('clave').value = '';
-
-                    // Descomenta la siguiente línea si quieres que lo redirija automáticamente al login
-                    // window.location.href = '../index.html'; 
+                    formularioRegistro.reset();
+                    
+                    // Redirección directa al vivir en la misma carpeta pages/
+                    window.location.href = 'login.html'; 
                 })
                 .catch(error => {
-                    console.error('Error en la petición POST:', error);
-                    alert('Hubo un error al intentar crear el usuario.');
+                    console.error('Error en la petición POST de registro:', error);
+                    alert('Hubo un error al intentar crear el usuario. Asegurate de tener la tabla usuarios en db.json');
                 });
         });
     }

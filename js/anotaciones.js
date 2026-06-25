@@ -1,34 +1,18 @@
-// JS dedicado a la gestión de anotaciones CRUD.
+// Esqueleto limpio listo para que tu equipo complete el CRUD de notas
+const API_URL = 'http://localhost:3000';
 
-//Funcion para crear el modal de la creación de una nueva anotacion.
+const modalNota = document.getElementById('modal-agregar-nota');
+const btnAbrirNota = document.getElementById('btn-agregar-nota');
 
-
-function abrirModal() {
-    if (document.querySelector('.modal-overlay')) return
-
-    // Obtiene el id del libro desde la URL
-    const params = new URLSearchParams(window.location.search)
-    const idLibro = params.get('id_libro')
-
-    const overlay = document.createElement('div')
-    overlay.className = 'modal-overlay-anotacion'
-
-    overlay.innerHTML = `
-        <div class="modal-box">         
-            <h2 class="modal-titulo">Agregar anotacion</h2>
-            <!-- El libro viene por URL, no se le pide al usuario -->
-            <input type="number" name="pagina" id="pagina" placeholder="Pagina de la anotacion">
-            <input type="text" name="contenido" id="contenido" placeholder="Contenido de la anotacion">
-            <div class="modal-acciones">
-                <button class="btn-secundario" id="btn-cancelar">Cancelar</button>
-                <!-- Al guardar se debe hacer POST /anotaciones con: idLibro, pagina, contenido y la fecha generada automáticamente con new Date() -->
-                <button class="btn-primario" id="btn-guardar">Guardar</button>
-            </div>
-        </div>
-    `
-    
-    document.body.appendChild(overlay)
-    overlay.querySelector('#btn-cancelar').onclick = () => overlay.remove()
+window.abrirModal = function(idModal) {
+    const modal = document.getElementById(idModal);
+    if (modal) modal.style.display = 'flex';
+}
+window.cerrarModal = function(idModal) {
+    const modal = document.getElementById(idModal);
+    if (modal) modal.style.display = 'none';
 }
 
-// CRUD 
+if (btnAbrirNota) {
+    btnAbrirNota.addEventListener('click', () => window.abrirModal('modal-agregar-nota'));
+}

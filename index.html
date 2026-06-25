@@ -3,51 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Biblioteca</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./script/script.js"></script>
-    <style>
-    </style>
+    <title>Gestor de Biblioteca - tomo.</title>
+    
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
-    <header>
-        <div>
-            <h1>Gestor de Biblioteca</h1>
-        </div>
-    </header>
-
     <main>
-        <section>
-            <div>
-                <h2>Bienvenido al Gestor de Biblioteca</h2>
-                <p>Inicie Sesion o Cree un usuario para continuar.</p>
-            </div>
-        </section>
-        <section>
-            <div>
-                <a href="./pages/singup.html">Crear Usuario</a>
-                <a href="./pages/login.html">Iniciar sesion</a>
-            </div>
-        </section>
-        <section>
+        <div class="contenedor-hero">
             
+            <section class="hero-izquierda">
+                <h1 class="efecto-tipeo">tomo.  </h1>
+                <p>Gestioná y organiza tu colección de libros de forma sencilla y eficiente.</p>
+                
+                <div class="cta-botones">
+                    <a href="./pages/login.html" class="btn btn-wheat">Ingresar al Gestor</a>
+                    <a href="./pages/singup.html" class="btn btn-wheat">Nuevo usuario</a>
+                    <a href="#info" class="link">Saber más</a>
+                </div>
+            </section>
+
+            <section class="hero-derecha">
+                <div class="collage-libros">
+                    <img src="https://acdn-us.mitiendanube.com/stores/542/287/products/9791387896003-meditaciones-marco-aurelio-tapa-49f1ea42d50ddf5cc717763447491962-640-0.webp" alt="Portada" class="portada-libros">
+                    <img src="https://archive.org/services/img/B-001-001-709/full/pct:200/0/default.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://harpercollins.com.au/cdn/shop/files/9780007482931.jpg?v=1776992231" alt="Portada" class="portada-libros">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_950553-MLA73629117795_122023-O.webp" alt="Portada" class="portada-libros">
+                    <img src="https://librerialaberintopr.com/cdn/shop/files/71SB0Xi_CiL._SL1150_800x.jpg?v=1722536098" alt="Portada" class="portada-libros">
+                    <img src="https://pictures.abebooks.com/inventory/30172154528.jpg" alt="Portada" class="portada-libros">
+                    
+                    <img src="https://contentful.harrypotter.com/usf1vwtuqyxm/3d9kpFpwHyjACq8H3EU6ra/85673f9e660407e5e4481b1825968043/English_Harry_Potter_4_Epub_9781781105672.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5fc7868e04dc9f2855c99940/b156d60f-05f8-4804-94f4-cfb18b8c33e7/Laura_Barrett_Wicked_Cover.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://cdn.kobo.com/book-images/8e4f409b-e5a7-4b3d-94fd-8a8476c1709e/1200/1200/False/white-nights-and-other-stories-27.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1487841905i/84979.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_997717-MLA48151424280_112021-O.webp" alt="Portada" class="portada-libros">
+                    
+                    <img src="https://m.media-amazon.com/images/I/71fJj6XIHZL._AC_UF1000,1000_QL80_.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1764413941i/244568033.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTkwNzJiYTctNzI3NC00NjE1LTlhYjktY2Q5MTdmMWFmNzcxXkEyXkFqcGc@._V1_.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Fire_%26_Blood_%282018%29_hardcover.jpg/250px-Fire_%26_Blood_%282018%29_hardcover.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://images.cdn1.buscalibre.com/fit-in/360x360/05/28/0528e5120ee91156087edd7a6528ca1d.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://pictures.abebooks.com/isbn/9781502551382-us.jpg" alt="Portada" class="portada-libros">
+
+                    <img src="https://gandhi.vtexassets.com/arquivos/ids/7443784/9788413374611.jpg?v=638968490472930000" alt="Portada" class="portada-libros">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_876053-MLA77821113884_072024-O.webp" alt="Portada" class="portada-libros">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Titus_Groan_%28book_cover%29.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://cdn2.penguin.com.au/covers/original/9780141442259.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://www.penguinlibros.com/ar/1595752/el-nombre-del-viento-edicion-de-lujo-por-el-10-aniversario-de-la-publicacion.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://img.readthistwice.com/unsafe/240x360/books/86eb2d81-0e1c-4ef9-81dc-495f7bb3ed11.jpg" alt="Portada" class="portada-libros">
+
+                    <img src="https://m.media-amazon.com/images/I/81NBlLKq5nL._UF1000,1000_QL80_.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://cdn-blog.superprof.com/blog_co/wp-content/uploads/2025/02/portada_conferencias-sobre-computacion_richard-p-feynman-scaled.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://m.media-amazon.com/images/I/61dtRkUbfRL._AC_UF1000,1000_QL80_.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://www.thebookdesigner.com/wp-content/uploads/2023/11/image-10.jpeg" alt="Portada" class="portada-libros">
+                    <img src="https://m.media-amazon.com/images/I/710C5x4MzwL._AC_UF1000,1000_QL80_.jpg" alt="Portada" class="portada-libros">
+                    <img src="https://m.media-amazon.com/images/I/71yt6mN5HuL._AC_UF1000,1000_QL80_.jpg" alt="Portada" class="portada-libros">
+                </div>
+            </section>
+        </div>
+
+        <section class="intro-seccion" id="info">
+            <div class="intro-contenido">
+                <h2>¿Qué es tomo.?</h2>
+                <p class="intro-texto">
+                    Es tu rincón literario digital. Olvidate de los cuadernos perdidos y las notas sueltas; acá vas a poder <strong>organizar tus lecturas</strong>, clasificar tus géneros favoritos y llevar un <strong>registro exacto de tus anotaciones</strong> en tiempo real a medida que avanzás en cada página.
+                </p>
+                
+                <h2>¿En qué te ayuda?</h2>
+                <p class="intro-texto">
+                    Diseñamos un panel limpio e intuitivo para que puedas dar de alta tus libros, asociarles un género con colores personalizados y escribir tus citas o reflexiones favoritas en tu propia bitácora personal. Todo se guarda al instante para que tu biblioteca crezca con vos.
+                </p>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; Programacion 3 - TP final.
-            <ol>
-                <li>Agustin Rodriguez</li>
-                <li>Axel Molina</li>
-                <li>Lara Serrano</li>
-                <li>Agustin Maidana</li>
-                <li>Giacomo Marangon</li>
-                <li>Esteban Najera</li>
-            </ol>
-        </p>
+        <div class="footer-contenido">
+            <p><strong>Programación Web - UTN FRT</strong> | Trabajo Práctico Final</p>
+            <ul class="lista-integrantes">
+                <li>Agustin Rodriguez <a href="https://github.com/agustinrodriguezgg" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Axel Molina <a href="https://github.com/axel674" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Lara Serrano <a href="https://github.com/Laraain" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Agustin Maidana <a href="https://github.com/AgusTinMd" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Giacomo Marangon <a href="https://github.com/Giacomo3945" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Esteban Nájera <a href="https://github.com/najeraesteban" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+        </div>
     </footer>
-
 </body>
 </html>

@@ -4,32 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <title>Registro</title> </head>
-<body>
-    <header>
-        <div>
-            <h1>Crear Usuario</h1>
-        </div>
-    </header>
-    <main>
-        <input type="text" name="usuario" id="usuario" placeholder="Usuario">
-        <input type="password" name="clave" id="clave" placeholder="Contraseña">
-        <button id="crearUsuario" type="submit">Crear Usuario</button>
-        <a href="../index.html">Volver</a>
-    </main>
-    <footer>
-        <p>&copy; Programacion 3 - TP final.
-            <ol>
-                <li>Agustin Rodriguez</li>
-                <li>Axel Molina</li>
-                <li>Lara Serrano</li>
-                <li>Agustin Maidana</li>
-                <li>Giacomo Marangon</li>
-                <li>Esteban Najera</li>
-            </ol>
-        </p>
-    </footer>
-
+    <title>Registro - tomo.</title> 
     <script src="../js/auth.js"></script> 
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/components.css">
+</head>
+
+<body class="pantalla-acceso">
+
+    <main class="contenedor-acceso">
+        <div class="tarjeta-acceso">
+            <h2 class="titulo-acceso">tomo.</h2>
+            <p class="subtitulo-acceso">Creá tu cuenta para empezar a organizar</p>
+
+            <form id="formulario-registro">
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Nombre de Usuario</label>
+                    <input type="text" name="usuario" id="usuario" class="entrada-formulario" placeholder="Ej: lara1" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Contraseña</label>
+                    <input type="password" name="clave" id="clave" class="entrada-formulario" placeholder="Mínimo 6 caracteres" required>
+                </div>
+
+                <button id="crearUsuario" type="submit" class="boton-bloque btn-wheat">Crear Usuario</button>
+            </form>
+
+            <div class="pie-tarjeta">
+                <p>¿Ya tenés una cuenta? <a href="./login.html" class="enlace-acceso">Iniciá sesión acá</a></p>
+                <a href="../index.html" class="enlace-volver">← Volver al inicio</a>
+            </div>
+        </div>
+    </main>
+    
 </body>
 </html>

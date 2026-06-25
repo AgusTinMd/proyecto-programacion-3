@@ -1,57 +1,118 @@
-// JS dedicado a la gestión de autores CRUD.
+// ==========================================================================
+// CONTROLADOR DE AUTORES CRUD - tomo. (js/autores.js)
+// ==========================================================================
 
-//Funcion para crear el modal de la creación de un nuevo autor.
-const API_URL = 'http://localhost:3000'
+const API_URL = 'http://localhost:3000';
+
+// --- 1. ELEMENTOS DEL DOM ---
+const modalAutor = document.getElementById('modal-agregar-autor');
+const btnAbrirAutor = document.getElementById('btn-agregar-autor');
+const btnMostrarAutores = document.getElementById('btn-mostrar-autores');
+const contenedorAutores = document.getElementById('contenedor-autores');
+const formAutor = document.getElementById('form-nuevo-autor');
+
+// --- 2. LOGICA INTERNA DE APERTURA Y CIERRE ---
+function abrirModalAutorPropio() {
+    if (modalAutor) modalAutor.style.display = 'flex';
+}
+
+function cerrarModalAutorPropio() {
+    if (modalAutor) modalAutor.style.display = 'none';
+}
+
+// Vinculamos el botón de tu panel izquierdo
+if (btnAbrirAutor) {
+    btnAbrirAutor.addEventListener('click', () => {
+        abrirModalAutorPropio();
+    });
+}
+
+// Cerrar si hacen clic afuera del modal
+window.addEventListener('click', (e) => {
+    if (e.target === modalAutor) {
+        cerrarModalAutorPropio();
+    }
+});
+
+// --- 3. EXPORTACIONES OBLIGATORIAS PARA TU EQUIPO (SINCRO CON LIBROS.JS) ---
 
 export async function abrirModalAutor() {
-    if (document.querySelector('.modal-overlay-autor')) return
-    
-    const overlay = document.createElement('div')
-    overlay.className = 'modal-overlay modal-overlay-autor'  // ← clase que ella va a estilizar
+    abrirModalAutorPropio();
+}
 
-    overlay.innerHTML = `
-        <div class="modal-box">         
-        <h2 class="modal-titulo">Agregar autor</h2>
-        <input type="text" name ="nombre" id="nombre" placeholder="Nombre del autor">
-        <div class="modal-acciones">
-            <button class="btn-secundario" id="btn-cancelar">Cancelar</button>
-            <button class="btn-primario" id="btn-guardar">Guardar</button>
-            </div>
-        </div>
-    `
-    
-    document.body.appendChild(overlay)
-    console.log('btn-guardar:', overlay.querySelector('#btn-guardar'))
-    overlay.querySelector('#btn-cancelar').onclick = () => overlay.remove()
-    overlay.querySelector('#btn-guardar').onclick = (e) =>{e.stopPropagation()
-        guardarAutor()
-    } 
+export async function guardarAutor() {
+    const inputAutor = document.getElementById('input-autor-nombre');
+    if (!inputAutor) return;
+
+    const nombreAutor = inputAutor.value;
+
+    try {
+        await axios.post(`${API_URL}/autores`, { nombre: nombreAutor });
+        alert("¡Autor registrado con éxito!");
+        
+        if (formAutor) formAutor.reset();
+        cerrarModalAutorPropio();
+        
+        await mostrarAutores(); 
+    } catch (error) {
+        console.error("Error al guardar autor:", error);
+    }
 }
 
 export async function cargarAutores() {
-    const select = document.getElementById('autorLibro')
-    if (!select) return  // si no existe el select, no hace nada
-    select.innerHTML = '<option value="">-- Seleccionar autor --</option>'
-    const response = await axios.get(`${API_URL}/autores`)
-    const autores = response.data
-    autores.forEach((autor) => {
-        const option = document.createElement('option')
-        option.value = autor.id
-        option.textContent = autor.nombre
-        select.appendChild(option)
-    })
+    const select = document.getElementById('select-autor') || document.getElementById('autorLibro');
+    if (!select) return;
+    
+    try {
+        select.innerHTML = '<option value="">-- Seleccionar autor --</option>';
+        const response = await axios.get(`${API_URL}/autores`);
+        const autores = response.data;
+        
+        autores.forEach((autor) => {
+            const option = document.createElement('option');
+            option.value = autor.id;
+            option.textContent = autor.nombre;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Error al rellenar select de autores:", error);
+    }
 }
 
+// --- 4. RENDER LOCAL EN LA GRILLA DERECHA ---
+async function mostrarAutores() {
+    if (!contenedorAutores) return;
+    try {
+        const response = await axios.get(`${API_URL}/autores`);
+        const autores = response.data;
+        
+        contenedorAutores.innerHTML = '';
+        autores.forEach(autor => {
+            contenedorAutores.innerHTML += `
+                <div class="tarjeta-libro-render">
+                    <div>
+                        <h3 class="titulo-libro-render">${autor.nombre}</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">ID de Registro: ${autor.id}</p>
+                    </div>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.error("Error al renderizar autores:", error);
+    }
+}
+
+// --- 5. DISPARADORES ---
+if (btnMostrarAutores) {
+    btnMostrarAutores.addEventListener('click', mostrarAutores);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('btn-agregar-autor')
-    if (btn) btn.onclick = () => abrirModalAutor()
-})
-
-
-async function guardarAutor() {
-    const nombreAutor = document.getElementById('nombre').value
-    await axios.post(`${API_URL}/autores`, { nombre: nombreAutor })
-    document.querySelector('.modal-overlay-autor').remove()
-    await cargarAutores()
-}
+    mostrarAutores();
+    if (formAutor) {
+        formAutor.addEventListener('submit', (e) => {
+            e.preventDefault();
+            guardarAutor();
+        });
+    }
+});

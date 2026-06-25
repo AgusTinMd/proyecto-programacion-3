@@ -1,1 +1,107 @@
+/* ==========================================================================
+   CONFIGURACIÓN GLOBAL Y VARIABLES (styles.css)
+   ========================================================================== */
+:root {
+    /* Paleta de Colores Cinemática / Aesthetic */
+    --color-seashell: #FFF4EB;
+    --color-wheat: #F6E0B6;
+    --color-powder-blue: #A6BCC9;
+    --color-french-blue: #3E4B8E;
+    --color-midnight-violet: #3D1534;
+    
+    /* Estados obligatorios de lectura */
+    --status-por-leer: #6B7280;
+    --status-leyendo: #D97706;    
+    --status-terminado: #059669;   
+}
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ocultar barra de desplazamiento genérica */
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: white;
+    color: var(--color-midnight-violet);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- SECCIÓN INFORMATIVA INFERIOR (LANDING) --- */
+.intro-seccion {
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: var(--color-seashell);
+}
+
+.intro-contenido {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.intro-seccion h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-midnight-violet);
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+.intro-texto-informal {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-top: 0.8rem;
+    margin-bottom: 2.5rem;
+    color: rgba(61, 21, 52, 0.85); /* Midnight violet suavizado */
+}
+
+.intro-seccion strong {
+    color: var(--color-french-blue);
+    font-weight: 800;
+}
+
+/* --- PIE DE PÁGINA GENERAL (FOOTER) --- */
+footer {
+    background-color: white;
+    padding: 3rem 2rem;
+    margin-top: auto;
+    border-top: 1px solid var(--color-powder-blue);
+}
+
+.footer-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.lista-integrantes {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.lista-integrantes li::after {
+    content: " •";
+    margin-left: 1rem;
+}
+
+.lista-integrantes li:last-child::after {
+    content: "";
+}

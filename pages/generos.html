@@ -5,28 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="../js/generos.js"></script>
-    <title>Generos</title>
+    <title>Gestor - Géneros</title>
+    
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div>
-            <h1>Generos</h1>
-        </div>
+
+    <header class="barra-navegacion">
+        <div class="logo-nav">tomo.</div>
+        <nav class="enlaces-nav">
+            <a href="./libros.html" class="link-nav">Libros</a>
+            <a href="./generos.html" class="link-nav activo">Géneros</a>
+            <a href="./autores.html" class="link-nav">Autores</a>
+            <a href="./anotaciones.html" class="link-nav">Anotaciones</a>
+        </nav>
+        <a href="../index.html" class="btn-salir" id="btn-cerrar-sesion">Cerrar Sesión</a>
     </header>
-    <main>
-        <button id="btn-agregar-genero">Agregar genero</button>
+
+    <main class="contenedor-gestor">
+        <section class="panel-controles">
+            <div class="tarjeta-control">
+                <h3>Géneros literarios</h3>
+                <p class="descripcion-control">Clasificá tu biblioteca creando y listando las categorías.</p>
+                <button id="btn-agregar-genero" class="btn btn-wheat boton-bloque">Agregar género</button>
+                <button id="btn-mostrar-generos" class="btn boton-principal boton-bloque">Mostrar géneros</button>
+            </div>
+        </section>
+
+        <section class="panel-catalogo">
+            <h2>Lista de Géneros</h2>
+            <div class="grilla-catalogo" id="contenedor-generos"></div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; Programacion 3 - TP final.
-            <ol>
-                <li>Agustin Rodriguez</li>
-                <li>Axel Molina</li>
-                <li>Lara Serrano</li>
-                <li>Agustin Maidana</li>
-                <li>Giacomo Marangon</li>
-                <li>Esteban Najera</li>
-            </ol>
-        </p>
+        <div class="footer-contenido">
+            <p><strong>Programación Web - UTN FRT</strong> | Trabajo Práctico Final</p>
+            <ul class="lista-integrantes">
+                <li>Agustin Rodriguez <a href="https://github.com/agustinrodriguezgg" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Axel Molina <a href="https://github.com/axel674" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Lara Serrano <a href="https://github.com/Laraain" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Agustin Maidana <a href="https://github.com/AgusTinMd" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Giacomo Marangon <a href="https://github.com/Giacomo3945" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Esteban Nájera <a href="https://github.com/najeraesteban" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+        </div>
     </footer>
+
+    <div id="modal-agregar-genero" class="modal-fondo">
+        <div class="modal-contenido">
+            <div class="modal-cabecera">
+                <h3>Crear Nuevo Género</h3>
+                <button type="button" class="btn-cerrar" onclick="cerrarModal('modal-agregar-genero')">&times;</button>
+            </div>
+            
+            <form id="form-nuevo-genero">
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Nombre del Género</label>
+                    <input type="text" id="input-genero-nombre" class="entrada-formulario" placeholder="Ej: Filosofía, Distopía, Romance" required>
+                </div>
+
+                <div class="modal-acciones">
+                    <button type="button" class="btn btn-volver" onclick="cerrarModal('modal-agregar-genero')">Cancelar</button>
+                    <button type="submit" class="btn boton-bloque">Guardar Género</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

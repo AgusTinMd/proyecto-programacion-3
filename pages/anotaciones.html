@@ -5,31 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="../js/anotaciones.js"></script>
-    <title>Anotaciones</title>
+    <title>Gestor - Anotaciones</title>
+    
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div>
-            <h1>Anotaciones</h1>
-        </div>
+
+    <header class="barra-navegacion">
+        <div class="logo-nav">tomo.</div>
+        <nav class="enlaces-nav">
+            <a href="./libros.html" class="link-nav">Libros</a>
+            <a href="./generos.html" class="link-nav">Géneros</a>
+            <a href="./autores.html" class="link-nav">Autores</a>
+            <a href="./anotaciones.html" class="link-nav activo">Anotaciones</a>
+        </nav>
+        <a href="../index.html" class="btn-salir" id="btn-cerrar-sesion">Cerrar Sesión</a>
     </header>
-    <main>
-        <a href="../index.html">Volver</a>
-        <!-- anotaciones.html -->
-        <button onclick="abrirModal()">Agregar anotacion</button>
+
+    <main class="contenedor-gestor">
+        <section class="panel-controles">
+            <div class="tarjeta-control">
+                <h3>Mis Apuntes</h3>
+                <p class="descripcion-control">Escribí reflexiones, citas o notas sobre tus lecturas actuales.</p>
+                <button id="btn-agregar-nota" class="btn btn-wheat boton-bloque">Nueva anotación</button>
+                <button id="btn-mostrar-notas" class="btn boton-principal boton-bloque">Ver anotaciones</button>
+            </div>
+        </section>
+
+        <section class="panel-catalogo">
+            <h2>Diario de Lectura</h2>
+            <div class="grilla-catalogo" id="contenedor-anotaciones"></div>
+        </section>
     </main>
-    
+
     <footer>
-        <p>&copy; Programacion 3 - TP final.
-            <ol>
-                <li>Agustin Rodriguez</li>
-                <li>Axel Molina</li>
-                <li>Lara Serrano</li>
-                <li>Agustin Maidana</li>
-                <li>Giacomo Marangon</li>
-                <li>Esteban Najera</li>
-            </ol>
-        </p>
+        <div class="footer-contenido">
+            <p><strong>Programación Web - UTN FRT</strong> | Trabajo Práctico Final</p>
+            <ul class="lista-integrantes">
+                <li>Agustin Rodriguez <a href="https://github.com/agustinrodriguezgg" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Axel Molina <a href="https://github.com/axel674" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Lara Serrano <a href="https://github.com/Laraain" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Agustin Maidana <a href="https://github.com/AgusTinMd" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Giacomo Marangon <a href="https://github.com/Giacomo3945" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Esteban Nájera <a href="https://github.com/najeraesteban" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+        </div>
     </footer>
+
+    <div id="modal-agregar-nota" class="modal-fondo">
+        <div class="modal-contenido">
+            <div class="modal-cabecera">
+                <h3>Crear Anotación</h3>
+                <button type="button" class="btn-cerrar" onclick="cerrarModal('modal-agregar-nota')">&times;</button>
+            </div>
+            
+            <form id="form-nueva-nota">
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Número de Página</label>
+                    <input type="number" id="input-nota-pagina" class="entrada-formulario" placeholder="Ej: 42" min="1" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Contenido de la anotación</label>
+                    <textarea id="input-nota-contenido" class="entrada-formulario" placeholder="Escribí tu reseña, cita o pensamiento acá..." style="resize:none; height:120px;" required></textarea>
+                </div>
+
+                <div class="modal-acciones">
+                    <button type="button" class="btn btn-volver" onclick="cerrarModal('modal-agregar-nota')">Cancelar</button>
+                    <button type="submit" class="btn boton-bloque">Guardar Nota</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

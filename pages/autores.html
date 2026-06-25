@@ -5,29 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="../js/autores.js"></script>
-    <title>autores</title>
+    <title>Gestor - Autores</title>
+    
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div>
-            <h1>Autores</h1>
-        </div>
+
+    <header class="barra-navegacion">
+        <div class="logo-nav">tomo.</div>
+        <nav class="enlaces-nav">
+            <a href="./libros.html" class="link-nav">Libros</a>
+            <a href="./generos.html" class="link-nav">Géneros</a>
+            <a href="./autores.html" class="link-nav activo">Autores</a>
+            <a href="./anotaciones.html" class="link-nav">Anotaciones</a>
+        </nav>
+        <a href="../index.html" class="btn-salir" id="btn-cerrar-sesion">Cerrar Sesión</a>
     </header>
-    <main>
-        <a href="../index.html">Volver</a>
-        <button id="btn-agregar-autor">Agregar autor</button>
+
+    <main class="contenedor-gestor">
+        <section class="panel-controles">
+            <div class="tarjeta-control">
+                <h3>Escritores</h3>
+                <p class="descripcion-control">Organizá los perfiles de los creadores de tus obras favoritas.</p>
+                <button id="btn-agregar-autor" class="btn btn-wheat boton-bloque">Agregar autor</button>
+                <button id="btn-mostrar-autores" class="btn boton-principal boton-bloque">Mostrar autores</button>
+            </div>
+        </section>
+
+        <section class="panel-catalogo">
+            <h2>Lista de Autores</h2>
+            <div class="grilla-catalogo" id="contenedor-autores"></div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; Programacion 3 - TP final.
-            <ol>
-                <li>Agustin Rodriguez</li>
-                <li>Axel Molina</li>
-                <li>Lara Serrano</li>
-                <li>Agustin Maidana</li>
-                <li>Giacomo Marangon</li>
-                <li>Esteban Najera</li>
-            </ol>
-        </p>
+        <div class="footer-contenido">
+            <p><strong>Programación Web - UTN FRT</strong> | Trabajo Práctico Final</p>
+            <ul class="lista-integrantes">
+                <li>Agustin Rodriguez <a href="https://github.com/agustinrodriguezgg" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Axel Molina <a href="https://github.com/axel674" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Lara Serrano <a href="https://github.com/Laraain" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Agustin Maidana <a href="https://github.com/AgusTinMd" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Giacomo Marangon <a href="https://github.com/Giacomo3945" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+                <li>Esteban Nájera <a href="https://github.com/najeraesteban" target="_blank" class="github-link"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+        </div>
     </footer>
+
+    <div id="modal-agregar-autor" class="modal-fondo">
+        <div class="modal-contenido">
+            <div class="modal-cabecera">
+                <h3>Registrar Autor</h3>
+                <button type="button" class="btn-cerrar" id="btn-cerrar-autor-cruz">&times;</button>
+            </div>
+            
+            <form id="form-nuevo-autor">
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Nombre Completo del Autor</label>
+                    <input type="text" id="input-autor-nombre" class="entrada-formulario" placeholder="Ej: Marco Aurelio" required>
+                </div>
+
+                <div class="modal-acciones">
+                    <button type="button" class="btn btn-volver" id="btn-cerrar-autor-cancelar">Cancelar</button>
+                    <button type="submit" class="btn boton-bloque">Guardar Autor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btn-cerrar-autor-cruz').onclick = () => document.getElementById('modal-agregar-autor').style.display = 'none';
+        document.getElementById('btn-cerrar-autor-cancelar').onclick = () => document.getElementById('modal-agregar-autor').style.display = 'none';
+    </script>
+
 </body>
 </html>
