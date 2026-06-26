@@ -1,117 +1,112 @@
-// ==========================================================================
-// CONTROLADOR DE LOGICA Y MODALES - tomo. (js/libros.js)
-// ==========================================================================
+// JS dedicado a la gestión de libros CRUD.
+//Funcion para crear el modal de la creación de un nuevo libro.
+const API_URL = 'http://localhost:3000'
+import { abrirModalAutor,cargarAutores } from './autores.js'
+import { abrirModalGenero,cargarGeneros } from './generos.js'
 
-import { cargarAutores } from './autores.js';
-import { cargarGeneros } from './generos.js';
 
-const API_URL = 'http://localhost:3000';
+export async function abrirModalLibros() {
+    if (document.querySelector('.modal-overlay')) return
+    
+    const overlay = document.createElement('div')
+    overlay.className = 'modal-overlay' // estilizar esa clase
+    
+    overlay.innerHTML = `
+    <div class="modal-box">         
+    <h2 class="modal-titulo">Agregar libro</h2>
+    <input type="text" name="nombreLibro" id="nombreLibro" placeholder="Nombre del libro">
+    
+    <div class="genero-row">
+    <select name="genero" id="genero">
+        <option value="">-- Seleccionar género --</option>
+    </select>
+    <button class="" id="btn-agregar-genero">Agregar genero</button>
+    </div>
 
-// --- 1. CAPTURA DE ELEMENTOS DEL DOM ---
-const modalLibro = document.getElementById('modal-agregar-libro');
-const btnAbrirLibro = document.getElementById('btn-agregar-libro');
-const btnMostrarLibros = document.getElementById('btn-mostrar-libros');
-const contenedorLibros = document.getElementById('contenedor-libros');
-const formLibro = document.getElementById('form-nuevo-libro');
-
-// Captura de botones de cierre específicos
-const btnCerrarCruz = document.getElementById('btn-cerrar-modal-cruz');
-const btnCerrarCancelar = document.getElementById('btn-cerrar-modal-cancelar');
-
-// --- 2. LOGICA INTERNA DE APERTURA Y CIERRE ---
-function abrirModalPropio() {
-    if (modalLibro) modalLibro.style.display = 'flex';
+    <div class="autor-row">
+    <select name="autorLibro" id="autorLibro">
+        <option value="">-- Seleccionar autor --</option>   
+    </select>
+    <button class="" id="btn-agregar-autor">Agregar autor</button>
+    </div>
+    
+    <input type="number" min="1" name="numeroPaginas" id="numeroPaginas" placeholder="Numero de paginas">
+    <select name="estado" id="estado">
+    <option value="Leido">Leido</option>
+    <option value="Sin Leer">Sin Leer</option>
+    <option value="Leyendo">Leyendo</option>
+    </select>
+    
+    <div class="modal-acciones">
+    <button class="btn-secundario" id="btn-cancelar">Cancelar</button>
+    <button class="btn-primario" id="btn-guardar">Guardar</button>
+    </div>
+    </div>
+    `
+    
+    document.body.appendChild(overlay)
+    
+overlay.querySelector('#btn-cancelar').onclick = (e) => {
+    e.stopPropagation()
+    overlay.remove()
 }
+    overlay.querySelector('#btn-guardar').onclick = () => guardarLibro()
 
-function cerrarModalPropio() {
-    if (modalLibro) modalLibro.style.display = 'none';
-}
-
-if (btnAbrirLibro) {
-    btnAbrirLibro.addEventListener('click', async () => {
-        abrirModalPropio();
-        // Cargamos los selectores invocando las funciones del equipo
-        await cargarGeneros();
-        await cargarAutores();
-    });
-}
-
-// Escuchadores de cierre libres de atributos del HTML
-if (btnCerrarCruz) btnCerrarCruz.addEventListener('click', cerrarModalPropio);
-if (btnCerrarCancelar) btnCerrarCancelar.addEventListener('click', cerrarModalPropio);
-
-window.addEventListener('click', (e) => {
-    if (e.target === modalLibro) {
-        cerrarModalPropio();
+    overlay.querySelector('#btn-agregar-autor').onclick = (e) => {e.stopPropagation()
+        abrirModalAutor()
     }
-});
-
-// --- 3. PETICIONES AXIOS (CRUD Y RENDER) ---
-async function mostrarLibros() {
-    try {
-        const response = await axios.get(`${API_URL}/libros`);
-        const libros = response.data;
-        
-        if (!contenedorLibros) return;
-        contenedorLibros.innerHTML = '';
-        
-        libros.forEach(libro => {
-            const claseEstado = libro.estado.toLowerCase().replace(' ', '-');
-            
-            contenedorLibros.innerHTML += `
-                <div class="tarjeta-libro-render">
-                    <div>
-                        <h3 class="titulo-libro-render">${libro.nombre}</h3>
-                        <p class="autor-libro-render">Autor ID: ${libro.autorId}</p>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.2rem;">Género ID: ${libro.generoId}</p>
-                        <p style="font-size: 0.9rem; color: #666;">Páginas: ${libro.numeroPaginas}</p>
-                    </div>
-                    <span class="badge badge-${claseEstado}">${libro.estado}</span>
-                </div>
-            `;
-        });
-    } catch (error) {
-        console.error("Error al obtener los libros:", error);
+    overlay.querySelector('#btn-agregar-genero').onclick = (e) => {e.stopPropagation()
+        abrirModalGenero()
     }
+
+    await cargarGeneros()
+    await cargarAutores()
 }
+// CRUD 
 
-if (btnMostrarLibros) {
-    btnMostrarLibros.addEventListener('click', mostrarLibros);
-}
 
-// --- 4. ENVÍO DEL FORMULARIO ---
-if (formLibro) {
-    formLibro.addEventListener('submit', async (e) => {
-        e.preventDefault(); 
-
-        const nuevoLibro = {
-            nombre: document.getElementById('input-titulo').value,
-            generoId: document.getElementById('select-genero').value,
-            autorId: document.getElementById('select-autor').value,
-            numeroPaginas: document.getElementById('input-paginas').value,
-            estado: document.getElementById('select-estado').value
-        };
-
-        try {
-            await axios.post(`${API_URL}/libros`, nuevoLibro);
-            alert("¡Libro guardado con éxito!");
-            formLibro.reset(); 
-            cerrarModalPropio(); 
-            mostrarLibros(); 
-        } catch (error) {
-            console.error("Error al guardar el libro:", error);
-        }
-    });
-}
-
-// --- 5. LOGICA DE CIERRE DE SESIÓN ---
-const btnSalir = document.getElementById('btn-cerrar-sesion');
-if (btnSalir) {
-    btnSalir.addEventListener('click', () => {
-        localStorage.removeItem('usuarioLogueado');
-    });
+async function guardarLibro(){
+    const nombreLibro = document.getElementById('nombreLibro').value
+    const generoId = document.getElementById('genero').value
+    const autorId = document.getElementById('autorLibro').value
+    const numeroPaginas = document.getElementById('numeroPaginas').value
+    const estado = document.getElementById('estado').value
+    
+    await axios.post(`${API_URL}/libros`, { 
+        nombre: nombreLibro,
+        generoId: generoId,
+        autorId: autorId,
+        numeroPaginas: numeroPaginas,
+        estado: estado
+    })
+    document.querySelector('.modal-overlay').remove()
+    await cargarLibros()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarLibros();
-});
+    document.getElementById('btn-agregar-libro').onclick = (e) => {e.stopPropagation()
+        abrirModalLibros()
+    }
+})
+
+async function mostrarLibros(){
+    const response = await axios.get(`${API_URL}/libros`)
+    const libros = response.data
+    console.log(libros)
+    const tarjetaLibros = document.createElement('div')
+    tarjetaLibros.className = 'tarjeta-libros'
+    tarjetaLibros.innerHTML = libros.map(libro => `
+        <div class="libro">
+            <h3>${libro.nombre}</h3>
+            <p>Género: ${libro.generoId}</p>
+            <p>Autor: ${libro.autorId}</p>
+            <p>Número de páginas: ${libro.numeroPaginas}</p>
+            <p>Estado: ${libro.estado}</p>
+        </div>
+    `).join('')
+    document.body.appendChild(tarjetaLibros)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarLibros()
+})

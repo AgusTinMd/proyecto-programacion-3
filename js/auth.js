@@ -25,8 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         alert('¡Inicio de sesión exitoso! Bienvenido/a ' + (foundUser.username));
                         localStorage.setItem('usuarioLogueado', JSON.stringify(foundUser));
                         
-                        // Redirección directa al vivir en la misma carpeta pages/
-                        window.location.href = 'libros.html'; 
+                        // --- AQUÍ IRÍA LA LÓGICA DE REDIRECCIÓN ---
+                        // window.location.href = 'dashboard.html'; 
+                        
                     } else {
                         alert('Error: Usuario o contraseña incorrectos.');
                     }
@@ -62,10 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Usuario creado en db.json:', response.data);
                     alert('¡Cuenta creada con éxito! Ahora iniciá sesión.');
                     
-                    formularioRegistro.reset();
-                    
-                    // Redirección directa al vivir en la misma carpeta pages/
-                    window.location.href = 'login.html'; 
+                    document.getElementById('usuario').value = '';
+                    document.getElementById('clave').value = '';
+
+                    // Descomenta la siguiente línea si quieres que lo redirija automáticamente al login
+                    // window.location.href = '../index.html'; 
                 })
                 .catch(error => {
                     console.error('Error en la petición POST de registro:', error);
